@@ -19,7 +19,7 @@ $categoryInfo = array(
 
 // Hooks
 
-function get_custom_cat_template($single_template) {
+/*function get_custom_cat_template($single_template) {
   global $post;
   $cat = get_the_category( $post->ID );
   $catSlug = $cat[0]->slug;
@@ -27,7 +27,7 @@ function get_custom_cat_template($single_template) {
   return $single_template;
 }
 
-add_filter( "single_template", "get_custom_cat_template" );
+add_filter( "single_template", "get_custom_cat_template" );*/
 
 include 'event-functions.php';
 include 'community-functions.php';

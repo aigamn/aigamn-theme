@@ -1,5 +1,7 @@
 <?php
 
+add_theme_support( 'post-thumbnails' ); 
+
 $categoryInfo = array(
   'cocktails-with-creatives' => array (
     'recurring' => true,

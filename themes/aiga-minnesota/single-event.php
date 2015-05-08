@@ -18,7 +18,7 @@
 					</a>
 				</div>
 
-				<h2><?php echo get_field('date'); ?>, <?php echo get_field('start_time'); ?> until <?php echo get_field('end_time'); ?></h2>
+				<h2><?php echo date("l, F jS, g:ia", get_field('start_time')); ?> until <?php echo date("g:ia", get_field('end_time')); ?></h2>
 				<h3>
 					<a target='_blank' href="<?php echo get_field('location_url'); ?>">
 						<?php echo get_field('location_name'); ?>

@@ -25,12 +25,12 @@
 					</a>
 				</h3>
 
-				<a href="#" class="btn btn-default cta">
+				<a href="<?php echo get_field('registration_link'); ?>" class="btn btn-default cta" target="_blank">
 					Register
 					<br>
-					<small>
+					<!-- <small>
 						10 seats left
-					</small>
+					</small> -->
 				</a>
 
 			</header>
@@ -76,22 +76,22 @@
 								<small class="text-uppercase">share it:</small>
 							</li>
 							<li class='xs-first'>
-								<a href='#' class='no-border'>
+								<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo the_permalink(); ?>" class='no-border'>
 									<span class='icon-facebook icon'></span>
 								</a>
 							</li>
 							<li>
-								<a href='#'>
+								<a href="https://twitter.com/home?status=<?php echo the_permalink(); ?>">
 									<span class='icon-twitter icon'></span>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href='#'>
 									<span class='icon-instagram icon'></span>
 								</a>
-							</li>
+							</li> -->
 							<li>
-								<a href='#'>
+								<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo the_permalink(); ?>&title=AIGA%20Minnesota%20Event&summary=&source=">
 									<span class='icon-linkedin icon'></span>
 								</a>
 							</li>

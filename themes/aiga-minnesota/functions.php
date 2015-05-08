@@ -25,34 +25,9 @@ function get_custom_cat_template($single_template) {
   return $single_template;
 }
 
-add_filter( "single_template", "get_custom_cat_template" ) ;
+add_filter( "single_template", "get_custom_cat_template" );
 
-
-// Events
-
-function isRecurring(){
-  return true;
-}
-
-function getNextRecurringEventLink(){
-  // link or empty
-}
-
-function getWrapUpLink(){
-  // link or empty
-}
-
-function getRegistrationLink(){
-  // link or empty
-}
-
-function isActive(){
-  
-}
-
-function getFooter(){
-  // this can wait
-}
-
+include 'event-functions.php';
+include 'community-functions.php';
 
 ?>

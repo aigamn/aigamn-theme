@@ -29,6 +29,7 @@ $categoryInfo = array(
 
 add_filter( "single_template", "get_custom_cat_template" );*/
 
+include 'blog-functions.php';
 include 'event-functions.php';
 include 'community-functions.php';
 

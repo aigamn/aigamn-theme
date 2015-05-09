@@ -16,25 +16,6 @@
 </head>
 <body>
 
-	<!-- Facebook JavaScript SDK -->
-	<script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : 'your-app-id',
-				xfbml      : true,
-				version    : 'v2.3'
-			});
-		};
-
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-
 	<header class='site-header'>
 		<a href="<?php echo home_url(); ?>">
 			<img class='logo' src='http://placehold.it/60x42/94deff/94deff' alt='logo'>
@@ -42,22 +23,22 @@
 
 		<ul class='list-unstyled list-inline pull-right hidden-xs'>
 			<li>
-				<a href='#'>Events</a>
+				<a href='<?php echo home_url(); ?>/event'>Events</a>
 			</li>
 			<li>
-				<a href="<?php echo home_url(); ?>/communities">Communities</a>
+				<a href="<?php echo home_url(); ?>/community">Communities</a>
 			</li>
 			<li>
-				<a href='#'>Membership</a>
+				<a href='<?php echo home_url(); ?>/membership'>Membership</a>
 			</li>
 			<li>
-				<a href='#'>Volunteer</a>
+				<a href='<?php echo home_url(); ?>/volunteer'>Volunteer</a>
 			</li>
 			<li>
-				<a href='#'>Sponsorship</a>
+				<a href='<?php echo home_url(); ?>/sponsorship'>Sponsorship</a>
 			</li>
 			<li>
-				<a href='#'>About</a>
+				<a href='<?php echo home_url(); ?>/about'>About</a>
 			</li>
 			<li>
 				<a href='#'>Blog</a>

@@ -52,7 +52,7 @@
 
 				<div class='item active'>
 
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt=''>
+					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
 
 					<div class='info'>
 						<h3>
@@ -81,7 +81,7 @@
 
 				<div class='item'>
 
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt=''>
+					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
 
 					<div class='info'>
 						<h3>
@@ -109,7 +109,7 @@
 				</div>
 				<div class='item'>
 
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt=''>
+					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
 
 					<div class='info'>
 						<h3>
@@ -137,7 +137,7 @@
 				</div>
 				<div class='item'>
 
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt=''>
+					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
 
 					<div class='info'>
 						<h3>
@@ -208,7 +208,7 @@
 		</div>
 
 		<div class='visible-sm visible-xs'>
-			<img src='http://placehold.it/768x432/94deff/84CeEf' alt=''>
+			<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
 
 			<div class='info'>
 				<h3>

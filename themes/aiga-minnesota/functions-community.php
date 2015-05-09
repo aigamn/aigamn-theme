@@ -16,8 +16,7 @@ function create_community_post_type() {
 				'editor',
 				'thumbnail', 
 				'excerpt',
-				'author',
-				'revisions'
+				'author'
 			),
 		)
 	);

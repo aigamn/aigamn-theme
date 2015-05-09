@@ -65,10 +65,10 @@
 
 		<ul class='list-unstyled list-inline pull-right visible-xs'>
 			<li>
-				<a href='#'>Events</a>
+				<a href='<?php echo home_url(); ?>/event'>Events</a>
 			</li>
 			<li>
-				<a href='#'>Communities</a>
+				<a href="<?php echo home_url(); ?>/community">Communities</a>
 			</li>
 			<li class='dropdown pull-right'>
 				<a data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -88,19 +88,19 @@
 						</label>
 					</li>
 					<li>
-						<a href='#'>Membership</a>
+						<a href='<?php echo home_url(); ?>/membership'>Membership</a>
 					</li>
 					<li>
-						<a href='#'>Volunteer</a>
+						<a href='<?php echo home_url(); ?>/volunteer'>Volunteer</a>
 					</li>
 					<li>
-						<a href='#'>Sponsorship</a>
+						<a href='<?php echo home_url(); ?>/sponsorship'>Sponsorship</a>
 					</li>
 					<li>
-						<a href='#'>About</a>
+						<a href='<?php echo home_url(); ?>/about'>About</a>
 					</li>
 					<li>
-						<a href='#'>Blog</a>
+						<a href='<?php echo home_url(); ?>/blog'>Blog</a>
 					</li>
 				</ul>
 			</li>

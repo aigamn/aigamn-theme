@@ -11,24 +11,24 @@
 		<small class='text-uppercase'>Connect with AIGA Minnesota</small>
 		<ul class='list-inline'>
 			<li>
-				<a href='#'>
+				<a href='https://www.facebook.com/aigaminnesota' target='_blank'>
 					<span class='icon-facebook'></span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href='https://twitter.com/aigamn' target='_blank'>
 					<span class='icon-twitter'></span>
 
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href='https://instagram.com/aigamn/' target='_blank'>
 					<span class='icon-instagram'></span>
 				</a>
 
 			</li>
 			<li>
-				<a href='#'>
+				<a href='https://www.linkedin.com/groups/AIGA-Minnesota-1412157/about' target='_blank'>
 					<span class='icon-linkedin'></span>
 				</a>
 			</li>

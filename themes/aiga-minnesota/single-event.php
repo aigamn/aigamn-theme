@@ -110,6 +110,21 @@
 				<div class="main-text">
 					<?php the_content(); ?>
 				</div>
+				<p>Thanks to our sponsors</p>
+				<div class="sponsors col-md-12">
+					<?php
+						$sponsors = get_field('sponsors');
+						foreach($sponsors as $sponsor) {
+							$sponsor_thumbnail = get_the_post_thumbnail($sponsor->ID);
+							$sponsor_post = get_post($sponsor->ID);
+							$sponsor_url = $sponsor_post->website;
+							echo "<div class='sponsor col-md-4'><a href=".$sponsor_url." target='_blank'>".$sponsor_thumbnail."</a>";
+							echo "<br>";
+							echo "<br>";
+							echo $sponsor_post->post_content."</div>";
+						}
+					?>
+				</div>
 			</section>
 
 		</article>

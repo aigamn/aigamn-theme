@@ -27,7 +27,7 @@ body{
 	}
 
 h1, h2, h3, h4, h5, h6{
-	
+
 	margin:0;
 	line-height: 1.32;
 }
@@ -127,7 +127,7 @@ nav .btn{
 
 		.events article h3{
 			font-size: 15px;
-		
+
 			margin-top: 0 !important;
 }
 
@@ -169,28 +169,28 @@ nav .btn{
 
 	.events .actions > *{
 		border:1px solid #515151;
-		border-width: 0 1px 0 0; 
+		border-width: 0 1px 0 0;
 	}
 
 		.events .actions > *:first-child{
-			border-width: 0 1px 0 0; 
+			border-width: 0 1px 0 0;
 		}
 
 		.events .actions > *:last-child{
-			border-width: 0; 
+			border-width: 0;
 		}
 
 	.events .main .actions > *{
 		border:1px solid #515151;
-		border-width: 1px 1px 1px 0; 
+		border-width: 1px 1px 1px 0;
 	}
 
 		.events .main .actions > *:first-child{
-			border-width: 1px; 
+			border-width: 1px;
 		}
 
 .tiles{}
-	
+
 	.tiles li{
 		background-color: #515151;
 		border:none;
@@ -231,20 +231,20 @@ nav .btn{
 
 		.tiles li h3{
 			font-size: 17px;
-		
+
 			margin: 5px 0 3px;
 }
 
 		.tiles li small{
 			font-size: 14px;
-		
+
 			margin-bottom: 10px;
 			display: block;
 }
 
 		.tiles li p{
 			font-size: 15px;
-		
+
 			margin-bottom: 15px;
 }
 
@@ -272,7 +272,7 @@ ul.border-right{
 
 .cta-header {
 	padding: 20px 200px 20px 20px;
-	position:relative;	
+	position:relative;
 }
 
 	.cta-header h2 {
@@ -293,7 +293,7 @@ ul.border-right{
 		right:0;
 		position:absolute;
 		top:15px;
-	
+
 }
 
 		.cta-header .cta small {
@@ -472,7 +472,7 @@ ul.border-right{
 					padding: 0 10px 8px 0;
 					position: absolute;
 					right:0;
-				
+
 					font-weight: 400;
 }
 
@@ -511,11 +511,11 @@ ul.border-right{
 				color: #515151;
 				padding: 10px 12px;
 			}
-		
+
 		.single .actions .icon {
 			font-size: 25px;
 		}
-		
+
 		.single .actions a {
 			border-left: 1px solid #b5b5b5;
 			font-size: 16px;
@@ -567,6 +567,22 @@ ul.border-right{
 		padding-bottom: 3px;
 	}
 
+	.single .sponsors {
+		margin-bottom: 3%;
+		display: flex;
+	}
+
+	.single .sponsor {
+		border: 1px solid gray;
+		margin-right: 2%;
+		padding: 2% 2% 2% 2%;
+	}
+
+		.single .sponsor .attachment-post-thumbnail {
+			width: 100%;
+			height: auto;
+		}
+
 
 /* ----- LIST PAGES ----- */
 .list{}
@@ -589,7 +605,7 @@ ul.border-right{
 	.list h2{
 		font-size: 22px;
 		margin-top: 20px;
-	
+
 		font-weight: 400;
 	}
 
@@ -671,7 +687,7 @@ ul.border-right{
 		font-size:12px;
 		font-weight:400;
 	}
-	
+
 }
 
 
@@ -732,14 +748,14 @@ ul.border-right{
 
 		.single .btn{
 			width: 100%;
-		
+
 			padding: 10px;
 }
 
 		.reveal .actions a{
 			background-color: #94DEFF;
 			color:#fff;
-		
+
 			font-weight: 400;
 }
 
@@ -786,13 +802,13 @@ ul.border-right{
 			font-size: 16px;
 			margin: 12px 0;
 		}
-		
+
 		.single .main-text li{
 			font-size: 12px;
 			margin: 12px 0;
 		}
-		
-	
+
+
 	/* ----- LAYOUT ----- */
 	.container{
 		max-width:480px;
@@ -827,7 +843,7 @@ ul.border-right{
 				position: static;
 				color: #515151;
 				padding-left: 0;
-			
+
 				font-weight: 400;
 			}
 
@@ -845,7 +861,7 @@ ul.border-right{
 
 			.tiles li h3{
 				font-size: 20px;
-			
+
 				line-height: 1.2em;
 }
 
@@ -892,7 +908,7 @@ ul.border-right{
 		.single .main-image {
 			margin: 10px 0 20px;
 		}
-	
+
 	/* ----- HOME ----- */
 	#home p{
 		margin: 12px 0;
@@ -905,7 +921,7 @@ ul.border-right{
 	#home h1{
 		font-size: 20px;
 	}
-	
+
 	#home section header a{
 		font-size:12px;
 	}

@@ -7,13 +7,13 @@
     include 'functions-post-footer.php';
     include 'functions-sponsor.php';
 
-    // [get_name username="username"]
+    // [get_name login="username"]
     function get_name_func( $atts ) {
         $a = shortcode_atts( array(
-            'username' => ''
+            'login' => ''
         ), $atts );
 
-        $username = $a['username'];
+        $username = $a['login'];
         //die($username);
         $user = get_user_by( 'login', $username );
         

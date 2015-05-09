@@ -41,7 +41,7 @@
 				<a href='<?php echo home_url(); ?>/about'>About</a>
 			</li>
 			<li>
-				<a href='#'>Blog</a>
+				<a href='<?php echo home_url(); ?>/blog'>Blog</a>
 			</li>
 			<li class='dropdown pull-right'>
 				<a id='search-dropdown-label' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

@@ -1,11 +1,8 @@
-event archives
-
-
 <?php include_once('header.php'); ?> 
 
     <div class='container gallery archives'>
         <h1>
-            Archives
+            Events
         </h1>
         <div class='masonry'>
             <div class='col-sm-4'>

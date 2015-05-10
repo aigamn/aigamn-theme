@@ -40,7 +40,7 @@
 			<h2 class='pull-left'>
 				Upcoming Events
 			</h2>
-			<a href='#' class='pull-right'>All Upcoming Events</a>
+			<a href="<?php echo bloginfo('url') ?>/event" class='pull-right'>All Upcoming Events</a>
 			<div class='clearfix'></div>
 		</header>
 
@@ -50,185 +50,92 @@
 			<!-- Wrapper for slides -->
 			<div class='carousel-inner col-md-8' role='listbox' >
 
-				<div class='item active'>
+				<?php $upcomingNonCommunityEvents = getUpcomingNonCommunityEvents(4);?>
+				<?php $counter = 0; ?>
+				<?php if($upcomingNonCommunityEvents->have_posts()) : while($upcomingNonCommunityEvents->have_posts()) : $upcomingNonCommunityEvents->the_post(); ?>
 
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
+				<?php
+					if($counter == 0) {
+						echo "<div class='item active'>";
+					}
+					else {
+						echo "<div class='item'>";
+					}
+				?>
+
+					<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
 
 					<div class='info'>
 						<h3>
-							Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
+							<?php the_title(); ?>
 						</h3>
 						<p>
-							Wednesday, October 15th, 6:00pm until 9:00pm
+							<?php echo date("l, F jS, g:ia", $startTime); ?>
 							<br>
-							Concordia University, Buetow Music Center Auditorium
+							<?php echo get_field('location'); ?>
 						</p>
 					</div>
 
 					<div class='actions'>
-						<a href='single-event.php' class='btn btn-info'>
+						<a href="<?php echo the_permalink(); ?>" class='btn btn-info'>
 							Details
 						</a>
-						<a href='#' class='btn btn-info'>
+						<a href="#" class='btn btn-info'>
 							Directions
 						</a>
-						<a href='#' class='btn btn-info'>
+						<a href="<?php echo get_field('registration_link'); ?>" class='btn btn-info'>
 							Register
 						</a>
 					</div>
 
 				</div>
 
-				<div class='item'>
+				<?php $counter++; ?>
+				<?php endwhile; endif; ?>
 
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
-
-					<div class='info'>
-						<h3>
-							Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
-						</h3>
-						<p>
-							Wednesday, October 15th, 6:00pm until 9:00pm
-							<br>
-							Concordia University, Buetow Music Center Auditorium
-						</p>
-					</div>
-
-					<div class='actions'>
-						<a href='#' class='btn btn-info'>
-							Details
-						</a>
-						<a href='#' class='btn btn-info'>
-							Directions
-						</a>
-						<a href='#' class='btn btn-info'>
-							Register
-						</a>
-					</div>
-
-				</div>
-				<div class='item'>
-
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
-
-					<div class='info'>
-						<h3>
-							Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
-						</h3>
-						<p>
-							Wednesday, October 15th, 6:00pm until 9:00pm
-							<br>
-							Concordia University, Buetow Music Center Auditorium
-						</p>
-					</div>
-
-					<div class='actions'>
-						<a href='#' class='btn btn-info'>
-							Details
-						</a>
-						<a href='#' class='btn btn-info'>
-							Directions
-						</a>
-						<a href='#' class='btn btn-info'>
-							Register
-						</a>
-					</div>
-
-				</div>
-				<div class='item'>
-
-					<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
-
-					<div class='info'>
-						<h3>
-							Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
-						</h3>
-						<p>
-							Wednesday, October 15th, 6:00pm until 9:00pm
-							<br>
-							Concordia University, Buetow Music Center Auditorium
-						</p>
-					</div>
-
-					<div class='actions'>
-						<a href='#' class='btn btn-info'>
-							Details
-						</a>
-						<a href='#' class='btn btn-info'>
-							Directions
-						</a>
-						<a href='#' class='btn btn-info'>
-							Register
-						</a>
-					</div>
-
-				</div>
 			</div>
 
 			<ul class='tiles col-md-4 list-unstyled carousel-indicators border-bottom'>
-				<li data-target='.carousel' data-slide-to='0' class='active'>
+				<?php $counter = 0; ?>
+				<?php if($upcomingNonCommunityEvents->have_posts()) : while($upcomingNonCommunityEvents->have_posts()) : $upcomingNonCommunityEvents->the_post(); ?>
+				<li data-target='.carousel' data-slide-to="<?php echo $counter; ?>" <?php if($counter == 0) { echo "class='active'"; } ?>>
 					<span class='state-indicator'></span>
 					<h3>
-						 Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
+						 <?php the_title(); ?>
 					</h3>
 					<small>
-						Wednesday, October 15th
+						<?php echo date("l, F jS", get_field('start_time')); ?>
 					</small>
 				</li>
-				<li data-target='.carousel' data-slide-to='1'>
-					<span class='state-indicator'></span>
-					<h3>
-						 Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
-					</h3>
-					<small>
-						Wednesday, October 15th
-					</small>
-				</li>
-				<li data-target='.carousel' data-slide-to='2'>
-					<span class='state-indicator'></span>
-					<h3>
-						 Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
-					</h3>
-					<small>
-						Wednesday, October 15th
-					</small>
-				</li>
-				<li data-target='.carousel' data-slide-to='3'>
-					<span class='state-indicator'></span>
-					<h3>
-						 Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
-					</h3>
-					<small>
-						Wednesday, October 15th
-					</small>
-				</li>
+				<?php $counter++; ?>
+				<?php endwhile; endif; ?>
 			</ul>
 
 			<div class='clearfix'></div>
 		</div>
 
 		<div class='visible-sm visible-xs'>
-			<img src='http://placehold.it/768x432/94deff/84CeEf' alt='' class='img-responsive'>
+			<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
 
 			<div class='info'>
 				<h3>
-					Concordia Leaders of Design Series 2014, Tokyo Type Director’s Club Exhibition
+					<?php the_title(); ?>
 				</h3>
 				<p>
-					Wednesday, October 15th, 6:00pm until 9:00pm
+					<?php echo date("l, F jS, g:ia", $startTime); ?> until <?php echo date("g:ia", $endTime); ?>
 					<br>
-					Concordia University, Buetow Music Center Auditorium
+					<?php echo get_field('location'); ?>
 				</p>
 			</div>
 
 			<div class='actions'>
-				<a href='#' class='btn btn-info'>
+				<a href="<?php echo the_permalink(); ?>" class='btn btn-info'>
 					Details
 				</a>
 				<a href='#' class='btn btn-info'>
 					Directions
 				</a>
-				<a href='#' class='btn btn-info'>
+				<a href="<?php echo get_field('registration_link'); ?>" class='btn btn-info'>
 					Register
 				</a>
 			</div>
@@ -241,37 +148,38 @@
 			<h2 class='pull-left'>
 				Communities
 			</h2>
-			<a href='#' class='pull-right'>All Communities</a>
+			<a href="<?php echo bloginfo('url') ?>/communities" class='pull-right'>All Communities</a>
 			<div class='clearfix'></div>
 		</header>
 		<ul class='tiles list-unstyled border-right border-bottom clearfix'>
-			<li class='col-sm-4 active'>
+
+			<?php $upcomingCommunityEvents = getUpcomingCommunityEvents(3);?>
+			<?php $counter = 0; ?>
+			<?php if($upcomingCommunityEvents->have_posts()) : while($upcomingCommunityEvents->have_posts()) : $upcomingCommunityEvents->the_post(); ?>
+
+				<?php
+					if($counter == 0) {
+						echo "<li class='col-sm-4 active'>";
+					}
+					else {
+						echo "<li class='col-sm-4'>";
+					}
+				?>
 				<span class='state-indicator'></span>
 				<h3>
-					Design for Good: Monthly Meeting
+					<?php $communities = getCommunities($post->ID); ?>
+					<?php echo $communities[0]->post_title . ":"; ?>
+					<br>
+					<a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a>
 				</h3>
 				<small>
-					Thursday, October 16th
+					<?php echo date("l, F jS", $startTime); ?>
 				</small>
 			</li>
-			<li class='col-sm-4'>
-				<span class='state-indicator'></span>
-				<h3>
-					Career Practice: Monthly Meeting
-				</h3>
-				<small>
-					Friday, October 17th
-				</small>
-			</li>
-			<li class='col-sm-4'>
-				<span class='state-indicator'></span>
-				<h3>
-					Design for Good: Monthly Meeting
-				</h3>
-				<small>
-					Thursday, October 16th
-				</small>
-			</li>
+
+			<?php $counter++; ?>
+			<?php endwhile; endif; ?>
+
 		</ul>
 	</section>
 
@@ -284,7 +192,7 @@
 			<h2 class='pull-left'>
 				Blog
 			</h2>
-			<a href='#' class='pull-right'>All Blog Entries</a>
+			<a href="<?php echo bloginfo('url') ?>/blog" class='pull-right'>All Blog Entries</a>
 			<div class='clearfix'></div>
 		</header>
 		<?php query_posts( array ( 'category_name' => 'blog', 'posts_per_page' => 3 ) ); ?>

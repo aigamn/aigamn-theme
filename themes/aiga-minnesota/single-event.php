@@ -12,7 +12,8 @@
 		$locationLink = get_field('location_link');
 		$wrapUpLink = get_field('wrap_up_link');
 		$registrationLink = get_field('registration_link');
-		$isPastEvent = isPastEvent($date);
+		$isPastEvent = isPastEvent($eventDate);
+		$isRecurringEvent = isRecurringEvent($post->ID);
 		$nextRecurringEventLink = getNextRecurringEventLink($post->ID, $eventDate);
 		$name = getRecurringEventName($post->ID);
 		$sponsors = get_field('sponsors');
@@ -23,6 +24,10 @@
 	<article class="container single">
 
 		<header class="cta-header">
+
+			<pre>
+				<?php var_dump(get_field('communities', $post->ID)); ?>
+			</pre>
 
 			<h1><?php the_title(); ?></h1>
 
@@ -137,7 +142,7 @@
 			<div class="main-text">
 				<?php the_content(); ?>
 				<?php
-					if($isPastEvent) {
+					if($isPastEvent && $isRecurringEvent) {
 						echo "<a href='".$nextRecurringEventLink."' class='btn btn-default cta'>View the Next ".$name."</a>";
 					}
 				?>
@@ -148,7 +153,7 @@
 					foreach($sponsors as $sponsor) {
 						$sponsor_thumbnail = get_the_post_thumbnail($sponsor->ID);
 						$sponsor_post = get_post($sponsor->ID);
-						$sponsor_url = $sponsor_post->website;
+						$sponsor_url = $sponsor_post->website_url;
 						echo "<div class='sponsor col-md-4'><a href=".$sponsor_url." target='_blank'>".$sponsor_thumbnail."</a>";
 						echo "<br>";
 						echo "<p>".$sponsor_post->post_content."</p></div>";

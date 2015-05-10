@@ -41,18 +41,26 @@
 	// !!IMPORTANT -- FLUSH REWRITE RULES ONLY WHEN CHANGING A TAXONOMY. OTHERWISE, THEY WILL BE CACHED
 	//flush_rewrite_rules();
 
-	function isRecurring(){
-	  return true;
+	function getFooter(){
+		// this can wait
+	}
+
+	function getCommunities($postId) {
+		$communities = get_field('communities', $postId);
+		return $communities;
+	}
+
+	function isRecurringEvent($postId){
+		$recurringEvent = get_the_terms($postId, 'recurring');
+		if($recurringEvent != "") {
+			return true;
+		}
 	}
 
 	function isPastEvent($date){
 		if ($date < time()) {
 			return true;
 		}
-	}
-
-	function getFooter(){
-	  // this can wait
 	}
 
 	function getRecurringEventName($postId) {
@@ -89,14 +97,65 @@
 		}
 	}
 
-	function getUpcomingEvents() {
+	function getUpcomingEvents($number = 0) {
 		$time = time();
 		$args = array(
-			'post_type'=>'event',
-			'meta_key'     => 'start_time',
-			'meta_value'   => $time,
-			'meta_compare' => '>',
+			'post_type'			=>'event',
+			'meta_key'    	=> 'start_time',
+			'meta_value'  	=> $time,
+			'meta_compare'	=> '>',
 		);
+		if($number > 0) {
+			$args['posts_per_page'] = $number;
+		}
+		$query = new WP_Query($args);
+		return $query;
+	}
+
+	function getUpcomingCommunityEvents($number = 0) {
+		$time = time();
+		$args = array(
+			'post_type'			=>'event',
+			'meta_query'		=> array(
+				array(
+					'key'    	=> 'start_time',
+					'value'  	=> $time,
+					'compare'	=> '>',
+				),
+				array(
+					'key'    	=> 'communities',
+					'value'  	=> 'ID',
+					'compare'	=> 'IN',
+				),
+			),
+		);
+		if($number > 0) {
+			$args['posts_per_page'] = $number;
+		}
+		$query = new WP_Query($args);
+		return $query;
+	}
+
+	function getUpcomingNonCommunityEvents($number = 0) {
+		$time = time();
+		$args = array(
+			'post_type'			=>'event',
+			'meta_query'		=> array(
+				array(
+					'key'    	=> 'start_time',
+					'value'  	=> $time,
+					'compare'	=> '>',
+				),
+				array(
+					'key'    	=> 'communities',
+					'value'  	=> 'ID',
+					'compare'	=> 'NOT IN',
+				),
+			),
+		);
+		if($number > 0) {
+			$args['posts_per_page'] = $number;
+		}
 		$query = new WP_Query($args);
 		return $query;
 	}
@@ -104,10 +163,10 @@
 	function getPastEvents() {
 		$time = time();
 		$args = array(
-			'post_type'=>'event',
-			'meta_key'     => 'end_time',
-			'meta_value'   => $time,
-			'meta_compare' => '<',
+			'post_type'			=>'event',
+			'meta_key'     	=> 'end_time',
+			'meta_value'   	=> $time,
+			'meta_compare' 	=> '<',
 		);
 		$query = new WP_Query($args);
 		return $query;

@@ -34,7 +34,7 @@
 						<li class='col-sm-4'>
 							<div class='border'>
 								<h3><?php echo $community->post_title ?></h3>
-								<?php echo get_the_post_thumbnail( $community->ID, 'thumbnail', array('class'=>'img-responsive') ); ?>
+								<?php echo get_the_post_thumbnail( $community->ID, 'medium', array('class'=>'img-responsive') ); ?>
 								<div class='copy'>
 									<?php echo $community->post_excerpt ?>
 									<p class='text-right'>

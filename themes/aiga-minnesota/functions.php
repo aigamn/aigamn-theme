@@ -16,21 +16,36 @@
         $username = $a['login'];
         //die($username);
         $user = get_user_by( 'login', $username );
-        
 
         return $user->display_name;
     }
     add_shortcode( 'get_name', 'get_name_func' );
-    /*add_action( 'init', 'testfunc' );
-    function testfunc(){
+
+    // [bootstrap_button copy='Button Text' type='primary' link='http://google.com']
+    function bootstrap_button_func( $atts ) {
         $a = shortcode_atts( array(
-            'username' => ''
+            'copy' => '',
+            'type' => 'primary',
+            'link' => ''
         ), $atts );
 
-        $username = $a['username'];
-        $user = get_user_by( 'login', $username );
-        die($user);
+        // check to see if link is external, and set target appropriately
 
-        return $user;
-    }*/
+        $copy = $a['copy'];
+        $type = $a['type'];
+        $link = $a['link'];
+
+        return '<a class="btn btn-' . $type . '" href="' . $link . '">' . $copy . '</a>';
+    }
+    add_shortcode( 'bootstrap_button', 'bootstrap_button_func' );
+
+    function lead_paragraphs($content) {
+        if( is_page() ){
+            $content = preg_replace('/<p([^>]+)?>/m', '<p$1 class="lead">', $content);
+        }
+        
+        return $content;
+    }
+
+    add_filter( 'the_content', 'lead_paragraphs' );
 ?>

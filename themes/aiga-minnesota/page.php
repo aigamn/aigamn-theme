@@ -27,9 +27,7 @@
 			<div class='main-image'>
 				<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
 			</div>
-			<div class='main-text'>
-				<?php the_content() ?>
-			</div> <!-- end .main-text -->
+			<?php the_content() ?>
 		</div>
 
 	</article>

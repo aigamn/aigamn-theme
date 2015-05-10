@@ -17,6 +17,7 @@ body{
 	box-sizing:border-box;
 	color:#515151;
 	font-size: 15px;
+	overflow-x:hidden;
 }
 
 	body *{
@@ -502,6 +503,12 @@ ul.border-right{
 	box-shadow: 0 0 20px -5px #38545e;
 }
 
+	.single .lead{
+		font-size:18px;
+		padding: 10px 0;
+		margin-bottom: 0;
+	}
+
 	.single .actions.left{
 		float:left;
 	}
@@ -763,14 +770,13 @@ ul.border-right{
 			width: 100%;
 
 			padding: 10px;
-}
+		}
 
 		.reveal .actions a{
 			background-color: #94DEFF;
 			color:#fff;
-
 			font-weight: 400;
-}
+		}
 
 		.reveal .actions li{
 			border-left: 1px solid #fff;

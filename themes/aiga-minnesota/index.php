@@ -8,7 +8,7 @@
 			</a>
 		</h1>
 
-		<?php the_content() ?>
+		<?php the_excerpt() ?>
 	</div>
 <?php endwhile; ?>
 

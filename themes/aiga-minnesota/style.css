@@ -472,16 +472,29 @@ ul.border-right{
 					padding: 0 10px 8px 0;
 					position: absolute;
 					right:0;
-
 					font-weight: 400;
-}
+				}
 
 /* ----- SINGLE EVENT ----- */
 
 .background {
-	background: linear-gradient(to bottom, #9CDAED 400px, #FFFFFF 400px, #FFFFFF 100%);
-	padding-top: 1px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 103%;
+	max-height: 500px;
+	z-index: -1;
+	-webkit-filter: blur(10px);
+	filter: blur(10px);
+	margin-left: -42px;
+	box-sizing: initial;
+	padding-left: 30px;
+	overflow: hidden;
 }
+
+	.background img {
+		width:100%;
+	}
 
 .single {
 	margin: 35px auto;

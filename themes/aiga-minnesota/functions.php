@@ -16,10 +16,6 @@
         $username = $a['login'];
         //die($username);
         $user = get_user_by( 'login', $username );
-<<<<<<< HEAD
-
-=======
->>>>>>> f9cfee00512d7f23481f968c76db4a4fe2c529fa
 
         return $user->display_name;
     }
@@ -47,7 +43,7 @@
         if( is_page() ){
             $content = preg_replace('/<p([^>]+)?>/m', '<p$1 class="lead">', $content);
         }
-        
+
         return $content;
     }
 

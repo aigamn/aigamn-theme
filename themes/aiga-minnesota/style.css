@@ -575,7 +575,7 @@ ul.border-right{
 	.single .sponsor {
 		border: 1px solid gray;
 		margin-right: 2%;
-		padding: 2% 2% 2% 2%;
+		padding: 10px 15px;
 	}
 
 		.single .sponsor .attachment-post-thumbnail {

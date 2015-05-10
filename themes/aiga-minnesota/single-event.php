@@ -3,6 +3,43 @@
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
+	<!-- Determine if event occurs in the past or future -->
+	<?php
+		$eventDate = get_field('start_time');
+		if ($eventDate < time()) {
+			$isPastEvent = true;
+		}
+	?>
+
+	<!-- Handle recurring events -->
+	<?php
+		$recurringTerms = get_the_terms($post->ID, 'recurring');
+		foreach($recurringTerms as $event) {
+			$slug = $event->slug;
+			$name = $event->name;
+		}
+		$today = getDate();
+		$args = array(
+			'post_type'=>'event',
+			'tax_query'=>array(
+				array(
+					'taxonomy'=>'recurring',
+					'field'=>'slug',
+					'terms'=>$slug,
+				),
+			),
+		);
+		$query = new WP_Query($args);
+		$returnedPosts = $query->posts;
+		foreach($returnedPosts as $returnedPost) {
+			$returnedStartTime = get_field('start_time', $returnedPost->ID);
+			if($returnedStartTime > time()) {
+				$futureEventLink = get_permalink($returnedPost->ID);
+				break;
+			}
+		}
+	?>
+
 	<div class="background"> <!--temporary solution to show blue background at top of page -->
 
 		<article class="container single">
@@ -18,20 +55,34 @@
 					</a>
 				</div>
 
-				<h2><?php echo date("l, F jS, g:ia", get_field('start_time')); ?> until <?php echo date("g:ia", get_field('end_time')); ?></h2>
+				<h2>
+					<?php
+						if($isPastEvent) {
+							echo "Happened " . date("F jS, o", get_field('end_time'));
+						}
+						else {
+							echo date("l, F jS, g:ia", get_field('start_time')); ?> until <?php echo date("g:ia", get_field('end_time'));
+						}
+					?>
+				</h2>
 				<h3>
 					<a target='_blank' href="<?php echo get_field('location_link'); ?>">
 						<?php echo get_field('location'); ?>
 					</a>
 				</h3>
 
-				<a href="<?php echo get_field('registration_link'); ?>" class="btn btn-default cta" target="_blank">
-					Register
-					<br>
-					<!-- <small>
-						10 seats left
-					</small> -->
-				</a>
+				<?php
+					$wrapUpLink = get_field('wrap_up_link');
+					if($isPastEvent) {
+						if($wrapUpLink != "") {
+							echo "<a href='".$wrapUpLink."' class='btn btn-default cta' target='_blank'>View the Wrap up</a>";
+						}
+					}
+					else {
+						$registrationLink = get_field('registration_link');
+						echo "<a href='".$registrationLink."' class='btn btn-default cta' target='_blank'>Register</a>";
+					}
+				?>
 
 			</header>
 
@@ -109,6 +160,11 @@
 				</div>
 				<div class="main-text">
 					<?php the_content(); ?>
+					<?php
+						if($isPastEvent) {
+							echo "<a href='".$futureEventLink."' class='btn btn-default cta' target='_blank'>View the Next ".$name."</a>";
+						}
+					?>
 				</div>
 				<p>Thanks to our sponsors</p>
 				<div class="sponsors col-md-12">
@@ -120,8 +176,7 @@
 							$sponsor_url = $sponsor_post->website;
 							echo "<div class='sponsor col-md-4'><a href=".$sponsor_url." target='_blank'>".$sponsor_thumbnail."</a>";
 							echo "<br>";
-							echo "<br>";
-							echo $sponsor_post->post_content."</div>";
+							echo "<p>".$sponsor_post->post_content."</p></div>";
 						}
 					?>
 				</div>

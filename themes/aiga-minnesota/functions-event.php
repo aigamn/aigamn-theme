@@ -16,7 +16,8 @@
 					'editor',
 					'thumbnail',
 					'excerpt',
-					'author'
+					'author',
+					'comments'
 				),
 			)
 		);

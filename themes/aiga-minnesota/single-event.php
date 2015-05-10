@@ -155,8 +155,8 @@
 					}
 				?>
 			</div>
+			<?php comments_template(); ?>
 		</section>
-
 	</article>
 
 	<?php endwhile; ?>

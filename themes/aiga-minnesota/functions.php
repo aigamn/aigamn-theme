@@ -46,9 +46,7 @@
 
         return $content;
     }
-
-        return $user;
-    }*/
+    add_filter( 'the_content', 'lead_paragraphs' );
 
     /*
    * Function creates post duplicate as a draft and redirects then to the edit post screen
@@ -156,5 +154,22 @@
   add_filter('community_row_action', 'rd_duplicate_post_link', 10, 2);
   add_filter('page_row_actions', 'rd_duplicate_post_link', 10, 2);
 
-  add_filter( 'the_content', 'lead_paragraphs' );
+
+    // Callback function to remove default bio field from user profile page
+    function remove_plain_bio($buffer) {
+        $titles = array('#<h3>About Yourself</h3>#','#<h3>About the user</h3>#');
+        $buffer=preg_replace($titles,'<h3>Password</h3>',$buffer,1);
+        $biotable='#<h3>Password</h3>.+?<table.+?/tr>#s';
+        $buffer=preg_replace($biotable,'<h3>Password</h3> <table class="form-table">',$buffer,1);
+        return $buffer;
+    }
+
+    function profile_admin_buffer_start() { ob_start("remove_plain_bio"); }
+
+    function profile_admin_buffer_end() { ob_end_flush(); }
+
+    add_action('admin_head', 'profile_admin_buffer_start');
+    add_action('admin_footer', 'profile_admin_buffer_end');
+
+  
 ?>

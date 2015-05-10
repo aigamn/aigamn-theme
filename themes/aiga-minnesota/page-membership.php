@@ -1,5 +1,4 @@
 <?php include_once('header.php'); ?>
-<h1>Membership.php</h1>
 <?php while ( have_posts() ) : the_post(); ?>
 	<div class='background'>
 		<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>

@@ -47,7 +47,6 @@
         return $content;
     }
 
-<<<<<<< HEAD
         return $user;
     }*/
 
@@ -157,7 +156,5 @@
   add_filter('community_row_action', 'rd_duplicate_post_link', 10, 2);
   add_filter('page_row_actions', 'rd_duplicate_post_link', 10, 2);
 
-=======
-    add_filter( 'the_content', 'lead_paragraphs' );
->>>>>>> f9cfee00512d7f23481f968c76db4a4fe2c529fa
+  add_filter( 'the_content', 'lead_paragraphs' );
 ?>

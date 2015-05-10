@@ -1,5 +1,5 @@
 <?php
-	
+
 	add_action( 'init', 'create_event_post_type' );
 	function create_event_post_type() {
 		register_post_type( 'event',
@@ -11,10 +11,10 @@
 				'public' => true,
 				'has_archive' => true,
 				'menu_position' => 5,
-				'supports' => array( 
-					'title', 
+				'supports' => array(
+					'title',
 					'editor',
-					'thumbnail', 
+					'thumbnail',
 					'excerpt',
 					'author'
 				),
@@ -31,7 +31,7 @@
 		            'manage_terms' => 'edit_posts', // means administrator', 'editor', 'author', 'contributor'
 		            'edit_terms' => 'edit_posts',
 		            'delete_terms' => 'edit_posts',
-		            'assign_terms' => 'edit_posts'  
+		            'assign_terms' => 'edit_posts'
 	            )
             )
 		);
@@ -44,24 +44,72 @@
 	  return true;
 	}
 
-	function getNextRecurringEventLink(){
-	  // link or empty
-	}
-
-	function getWrapUpLink(){
-	  // link or empty
-	}
-
-	function getRegistrationLink(){
-	  // link or empty
-	}
-
-	function isActive(){
-	  
+	function isPastEvent($date){
+		if ($date < time()) {
+			return true;
+		}
 	}
 
 	function getFooter(){
 	  // this can wait
+	}
+
+	function getRecurringEventName($postId) {
+		$recurringEvent = get_the_terms($postId, 'recurring');
+		foreach($recurringEvent as $event) {
+			$name = $event->name;
+			return $name;
+		}
+	}
+
+	function getNextRecurringEventLink($postId, $date) {
+		$recurringEvent = get_the_terms($postId, 'recurring');
+		foreach($recurringEvent as $event) {
+			$slug = $event->slug;
+		}
+		$args = array(
+			'post_type'=>'event',
+			'tax_query'=>array(
+				array(
+					'taxonomy'=>'recurring',
+					'field'=>'slug',
+					'terms'=>$slug,
+				),
+			),
+		);
+		$query = new WP_Query($args);
+		$returnedPosts = $query->posts;
+		foreach($returnedPosts as $returnedPost) {
+			$postStartTime = get_field('start_time', $returnedPost->ID);
+			if($postStartTime > time()) {
+				$nextRecurringEventLink = get_permalink($returnedPost->ID);
+				return $nextRecurringEventLink;
+			}
+		}
+	}
+
+	function getUpcomingEvents() {
+		$time = time();
+		$args = array(
+			'post_type'=>'event',
+			'meta_key'     => 'start_time',
+			'meta_value'   => $time,
+			'meta_compare' => '>',
+		);
+		$query = new WP_Query($args);
+		return $query;
+	}
+
+	function getPastEvents() {
+		$time = time();
+		$args = array(
+			'post_type'=>'event',
+			'meta_key'     => 'end_time',
+			'meta_value'   => $time,
+			'meta_compare' => '<',
+		);
+		$query = new WP_Query($args);
+		return $query;
 	}
 
 ?>

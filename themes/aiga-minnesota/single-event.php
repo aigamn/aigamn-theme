@@ -3,41 +3,19 @@
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-	<!-- Determine if event occurs in the past or future -->
+	<!-- Set all the needed variables and call all needed functions -->
 	<?php
 		$eventDate = get_field('start_time');
-		if ($eventDate < time()) {
-			$isPastEvent = true;
-		}
-	?>
-
-	<!-- Handle recurring events -->
-	<?php
-		$recurringTerms = get_the_terms($post->ID, 'recurring');
-		foreach($recurringTerms as $event) {
-			$slug = $event->slug;
-			$name = $event->name;
-		}
-		$today = getDate();
-		$args = array(
-			'post_type'=>'event',
-			'tax_query'=>array(
-				array(
-					'taxonomy'=>'recurring',
-					'field'=>'slug',
-					'terms'=>$slug,
-				),
-			),
-		);
-		$query = new WP_Query($args);
-		$returnedPosts = $query->posts;
-		foreach($returnedPosts as $returnedPost) {
-			$returnedStartTime = get_field('start_time', $returnedPost->ID);
-			if($returnedStartTime > time()) {
-				$futureEventLink = get_permalink($returnedPost->ID);
-				break;
-			}
-		}
+		$startTime = get_field('start_time');
+		$endTime = get_field('end_time');
+		$location = get_field('location');
+		$locationLink = get_field('location_link');
+		$wrapUpLink = get_field('wrap_up_link');
+		$registrationLink = get_field('registration_link');
+		$isPastEvent = isPastEvent($date);
+		$nextRecurringEventLink = getNextRecurringEventLink($post->ID, $eventDate);
+		$name = getRecurringEventName($post->ID);
+		$sponsors = get_field('sponsors');
 	?>
 
 	<div class="background"> <!--temporary solution to show blue background at top of page --></div>
@@ -58,28 +36,26 @@
 			<h2>
 				<?php
 					if($isPastEvent) {
-						echo "Happened " . date("F jS, o", get_field('end_time'));
+						echo "Happened " . date("F jS, o", $endTime);
 					}
 					else {
-						echo date("l, F jS, g:ia", get_field('start_time')); ?> until <?php echo date("g:ia", get_field('end_time'));
+						echo date("l, F jS, g:ia", $startTime); ?> until <?php echo date("g:ia", $endTime);
 					}
 				?>
 			</h2>
 			<h3>
-				<a target='_blank' href="<?php echo get_field('location_link'); ?>">
-					<?php echo get_field('location'); ?>
+				<a target='_blank' href="<?php echo $location_link; ?>">
+					<?php echo $location; ?>
 				</a>
 			</h3>
 
 			<?php
-				$wrapUpLink = get_field('wrap_up_link');
 				if($isPastEvent) {
 					if($wrapUpLink != "") {
 						echo "<a href='".$wrapUpLink."' class='btn btn-default cta' target='_blank'>View the Wrap up</a>";
 					}
 				}
 				else {
-					$registrationLink = get_field('registration_link');
 					echo "<a href='".$registrationLink."' class='btn btn-default cta' target='_blank'>Register</a>";
 				}
 			?>
@@ -162,14 +138,13 @@
 				<?php the_content(); ?>
 				<?php
 					if($isPastEvent) {
-						echo "<a href='".$futureEventLink."' class='btn btn-default cta' target='_blank'>View the Next ".$name."</a>";
+						echo "<a href='".$nextRecurringEventLink."' class='btn btn-default cta'>View the Next ".$name."</a>";
 					}
 				?>
 			</div>
 			<p>Thanks to our sponsors</p>
 			<div class="sponsors col-md-12">
 				<?php
-					$sponsors = get_field('sponsors');
 					foreach($sponsors as $sponsor) {
 						$sponsor_thumbnail = get_the_post_thumbnail($sponsor->ID);
 						$sponsor_post = get_post($sponsor->ID);

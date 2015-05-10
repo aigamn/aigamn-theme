@@ -3,12 +3,12 @@
   <div class='container list communities gallery archives'>
     <h1>Events</h1>
     <br>
-    <a href="<?php echo bloginfo('url'); ?>/event" class='btn btn-primary'>Upcoming Events</a>
-    <a href="<?php echo bloginfo('url'); ?>/event-past" class='btn btn-info'>Past Events</a>
+    <a href="<?php echo bloginfo('url'); ?>/event" class='btn btn-info'>Upcoming Events</a>
+    <a href="<?php echo bloginfo('url'); ?>/event-past" class='btn btn-primary'>Past Events</a>
     <div class='masonry'>
       <section>
         <ul class='list-unstyled row'>
-          <?php $the_query = getUpcomingEvents(); ?>
+          <?php $the_query = getPastEvents(); ?>
           <?php if($the_query->have_posts()) : while($the_query->have_posts()) : $the_query->the_post(); ?>
           <li class='col-sm-4'>
             <div class='border'>

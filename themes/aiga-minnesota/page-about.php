@@ -50,12 +50,14 @@
 			</div>
 			<?php the_content() ?>
 			<div class='main-text'>
+				<h2>Board of Directors</h2>	
 
-				<h2><?php echo get_field('officers_heading') ?></h2>
+				<h3><?php echo get_field('officers_heading') ?></h3>
 				<div class='row'>
 					<?php foreach($officers->results as $officer): ?>
 						<div class='col-sm-4'>
-							<h3><?php echo get_field('position_title', 'user_' . $officer->data->ID) ?></h3>
+							<?php echo get_field('position_title', 'user_' . $officer->data->ID) ?>
+							<br>
 							<?php
 								$image = get_field('bio_picture', 'user_' . $officer->data->ID);
 								$size = 'thumbnail'; // (thumbnail, medium, large, full or custom size)
@@ -73,11 +75,12 @@
 					<?php endforeach ?>
 				</div>
 
-				<h2><?php echo get_field('directors_heading') ?></h2>
+				<h3><?php echo get_field('directors_heading') ?></h3>
 				<div class='row'>
 					<?php foreach($directors->results as $director): ?>
 						<div class='col-sm-4'>
-							<h3><?php echo get_field('position_title', 'user_' . $director->data->ID) ?></h3>
+							<?php echo get_field('position_title', 'user_' . $director->data->ID) ?>
+							<br>
 							<?php
 								$image = get_field('bio_picture', 'user_' . $director->data->ID);
 								$size = 'thumbnail'; // (thumbnail, medium, large, full or custom size)
@@ -95,11 +98,12 @@
 					<?php endforeach ?>
 				</div>
 
-				<h2><?php echo get_field('associate_directors_heading') ?></h2>
+				<h3><?php echo get_field('associate_directors_heading') ?></h3>
 				<div class='row'>
 					<?php foreach($associate_directors->results as $associate_director): ?>
 						<div class='col-sm-4'>
-							<h3><?php echo get_field('position_title', 'user_' . $associate_director->data->ID) ?></h3>
+							<?php echo get_field('position_title', 'user_' . $associate_director->data->ID) ?>
+							<br>
 							<?php
 								$image = get_field('bio_picture', 'user_' . $associate_director->data->ID);
 								$size = 'thumbnail'; // (thumbnail, medium, large, full or custom size)
@@ -116,6 +120,10 @@
 						</div>
 					<?php endforeach ?>
 				</div>
+
+				<h3><?php echo get_field('past_presidents_heading') ?></h3>
+				<h3><?php echo get_field('past_presidents') ?></h3>
+
 			</div> <!-- end .main-text -->
 		</div>
 

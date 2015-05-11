@@ -195,8 +195,8 @@
 			<a href="<?php echo bloginfo('url') ?>/blog" class='pull-right'>All Blog Entries</a>
 			<div class='clearfix'></div>
 		</header>
-		<?php query_posts( array ( 'category_name' => 'blog', 'posts_per_page' => 3 ) ); ?>
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php $blogPosts = getBlogPosts(); ?>
+		<?php if ( $blogPosts->have_posts() ) : while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 		<ul class='tiles list-unstyled border-bottom'>
 			<li>
 				<span class='state-indicator'></span>
@@ -207,10 +207,14 @@
 				<p>
 					<?php the_excerpt(); ?>
 				</p>
+				<p>
+					<a href="<?php echo the_permalink(); ?>" class='btn btn-info'>
+						Read More
+					</a>
+				</p>
 			</li>
 		</ul>
-		<?php endwhile;
-		wp_reset_query(); ?>
+		<?php endwhile; endif; ?>
 	</section>
 
 </div> <!-- end .container -->

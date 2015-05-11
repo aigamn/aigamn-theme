@@ -6,6 +6,7 @@
     include 'functions-community.php';
     include 'functions-post-footer.php';
     include 'functions-sponsor.php';
+    include 'functions-blog.php';
 
     // [get_name login="username"]
     function get_name_func( $atts ) {
@@ -171,5 +172,5 @@
     add_action('admin_head', 'profile_admin_buffer_start');
     add_action('admin_footer', 'profile_admin_buffer_end');
 
-  
+
 ?>

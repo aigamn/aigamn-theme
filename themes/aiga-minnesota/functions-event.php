@@ -124,8 +124,8 @@
 				),
 				array(
 					'key'    	=> 'communities',
-					'value'  	=> 'ID',
-					'compare'	=> 'IN',
+					'value'		=> '',
+					'compare'	=> '!=',
 				),
 			),
 		);
@@ -148,8 +148,8 @@
 				),
 				array(
 					'key'    	=> 'communities',
-					'value'  	=> 'ID',
-					'compare'	=> 'NOT IN',
+					'value'		=> '',
+					'compare'	=> '=',
 				),
 			),
 		);

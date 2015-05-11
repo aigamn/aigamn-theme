@@ -25,10 +25,6 @@
 
 		<header class="cta-header">
 
-			<pre>
-				<?php var_dump(get_field('communities', $post->ID)); ?>
-			</pre>
-
 			<h1><?php the_title(); ?></h1>
 
 			<div class="main-image visible-xs">

@@ -17,6 +17,7 @@
 		$nextRecurringEventLink = getNextRecurringEventLink($post->ID, $eventDate);
 		$name = getRecurringEventName($post->ID);
 		$sponsors = get_field('sponsors');
+		$footer = get_field('post_footer');
 	?>
 
 	<div class="background"> <!--temporary solution to show blue background at top of page --></div>
@@ -156,6 +157,11 @@
 					}
 				?>
 			</div>
+			<br>
+			<?php echo $footer->post_content; ?>
+			<br>
+			<br>
+			<br>
 			<?php comments_template(); ?>
 		</section>
 	</article>

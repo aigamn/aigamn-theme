@@ -136,6 +136,10 @@
 		return $query;
 	}
 
+	function getUpcomingEventsByCommunity($community, $number = 0) {
+
+	}
+
 	function getUpcomingNonCommunityEvents($number = 0) {
 		$time = time();
 		$args = array(

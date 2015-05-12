@@ -80,7 +80,7 @@
 						<a href="<?php echo the_permalink(); ?>" class='btn btn-info'>
 							Details
 						</a>
-						<a href="#" class='btn btn-info'>
+						<a href="http://maps.google.com/?q=<?php echo get_field('location'); ?>" class='btn btn-info' target="_blank">
 							Directions
 						</a>
 						<a href="<?php echo get_field('registration_link'); ?>" class='btn btn-info'>
@@ -132,7 +132,7 @@
 				<a href="<?php echo the_permalink(); ?>" class='btn btn-info'>
 					Details
 				</a>
-				<a href='#' class='btn btn-info'>
+				<a href="http://maps.google.com/search/<?php echo get_field('location'); ?>" class='btn btn-info' target="_blank">
 					Directions
 				</a>
 				<a href="<?php echo get_field('registration_link'); ?>" class='btn btn-info'>
@@ -195,9 +195,9 @@
 			<a href="<?php echo bloginfo('url') ?>/blog" class='pull-right'>All Blog Entries</a>
 			<div class='clearfix'></div>
 		</header>
-		<?php $blogPosts = getBlogPosts(); ?>
-		<?php if ( $blogPosts->have_posts() ) : while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 		<ul class='tiles list-unstyled border-bottom'>
+			<?php $blogPosts = getBlogPosts(3); ?>
+			<?php if ( $blogPosts->have_posts() ) : while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 			<li>
 				<span class='state-indicator'></span>
 				<h3>
@@ -213,8 +213,8 @@
 					</a>
 				</p>
 			</li>
+			<?php endwhile; endif; ?>
 		</ul>
-		<?php endwhile; endif; ?>
 	</section>
 
 </div> <!-- end .container -->

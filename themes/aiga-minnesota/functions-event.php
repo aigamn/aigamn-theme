@@ -55,6 +55,7 @@
 		if($recurringEvent != "") {
 			return true;
 		}
+		return false;
 	}
 
 	function isPastEvent($date){
@@ -65,10 +66,12 @@
 
 	function getRecurringEventName($postId) {
 		$recurringEvent = get_the_terms($postId, 'recurring');
-		foreach($recurringEvent as $event) {
-			$name = $event->name;
-			return $name;
+		if($recurringEvent){
+			foreach($recurringEvent as $event) {
+				return $event->name;
+			}
 		}
+		return false;
 	}
 
 	function getNextRecurringEventLink($postId, $date) {

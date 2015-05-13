@@ -1,72 +1,83 @@
+<?php 
+	$footer = get_field('post_footer');
+?>
+
 <?php include_once('header.php'); ?>
 
-<div class="background"> <!--temporary solution to show blue background at top of page -->
+<?php while ( have_posts() ) : the_post(); ?>
+	<div class='background'>
+		<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
+	</div>
 
-	<article class="container single">
 
-		<header class="cta-header">
+	<article class='container single'>
 
-			<h1>Membership</h1>
-			
-			<div class="main-image visible-xs">
-				<img src="http://placehold.it/1024x576/94deff/84CeEf" class="img-responsive" alt="place holder image" />
+		<header class='cta-header'>
+
+			<h1><?php the_title() ?></h1>
+
+			<div class='reveal cta'>
+				<button class='btn btn-info visible-xs' data-toggle-parent='.reveal' data-toggle-class='expanded'>
+					<span class="glyphicon glyphicon-share icon"></span>
+					Share It
+				</button>
+
+				<div class='reveal-content'>
+					<ul class="right actions xs-fourths list-inline">
+						<li class='hidden-xs'>
+							<small class="text-uppercase">share it:</small>
+						</li>
+						<li class='xs-first'>
+							<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo the_permalink(); ?>" class='no-border'>
+								<span class='icon-facebook icon'></span>
+							</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/home?status=<?php echo the_permalink(); ?>">
+								<span class='icon-twitter icon'></span>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo the_permalink(); ?>&title=AIGA%20Minnesota%20Event&summary=&source=">
+								<span class='icon-linkedin icon'></span>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 
-			<a href="mailto:membership@aigaminnesota.org" class="btn btn-default cta">
-				Contact
-				<br>
-				<small>
-					membership@aigaminnesota.org
-				</small>
-			</a>
+			<div class="clearfix"></div>
 
 		</header>
 
-		<div class="col-md-10 col-md-offset-1">
+		<div class='col-md-10 col-md-offset-1'>
+
+			<div class="clearfix"></div>
 
 			<div class="main-image hidden-xs">
-				<img src="http://placehold.it/1024x576/94deff/84CeEf" class="img-responsive" alt="place holder image" />
-				<a href="#">
-					<img src="images/pin-it.png" class="pin-it" alt="pin it place holder" />
-				</a>
+				<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
+				<span class='pin-it'>
+					<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red">
+						<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" />
+					</a>
+				</span>
 			</div>
 			<div class="main-text">
-				<p>
-					Why should you join AIGA? Because you want to ensure that your profession is strong, relevant, and influential. Because you want to make an investment in yourself and your career, and other other like-minded, fun individuals. Also, you get benefits, including discounts on popular events like Design Camp and Portfolio 1-on-1, access to the national AIGA Design Directory, and original published content only available to AIGA members. See a list of all membership benefits.
-				</p>
-
-				<p>
-					<a href='' class='btn btn-primary'>
-						<strong>
-							Join AIGA
-						</strong>
-					</a>
-					<small>
-						Note: Sign Up is done through the AIGA national site
-					</small>
-				</p>
-				<h3>Already a member?</h3>
-				<p>
-					
-					<a href='' class='btn btn-info'>Renew your membership</a>
-				</p>
-				<p>
-					<a href='' class='btn btn-info'>Update your profile</a>
-				</p>
+				<?php the_content(); ?>
 				
-				<section id='benefits'>
-					<h3>Membership Benefits</h3>
-
-					<p>
-
-						Updated list of member benefits. They don’t seem very appealing in their current state
+				<?php if($footer): ?> 
+					<p class='well'>
+						<?php echo do_shortcode($footer->post_content) ?>
 					</p>
-				</section>
-			</div> <!-- end .main-text -->
+				<?php endif ?>
+				
+			</div>
+			<?php comments_template(); ?>
+
 		</div>
 
 	</article>
 
-</div>
+<?php endwhile; ?>
 
 <?php include_once('footer.php'); ?>

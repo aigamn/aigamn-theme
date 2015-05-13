@@ -46,7 +46,7 @@
 	}
 
 	function getCommunities($postId) {
-		$communities = get_field('communities', $postId);
+		$communities = get_field('community', $postId);
 		return $communities;
 	}
 
@@ -126,7 +126,7 @@
 					'compare'	=> '>',
 				),
 				array(
-					'key'    	=> 'communities',
+					'key'    	=> 'community',
 					'value'		=> '',
 					'compare'	=> '!=',
 				),
@@ -139,8 +139,27 @@
 		return $query;
 	}
 
-	function getUpcomingEventsByCommunity($community, $number = 0) {
-
+	function getUpcomingEventsByCommunity($communityPostId, $number = 0) {
+		$args = array(
+			'post_type'			=>'event',
+			'meta_query'		=> array(
+				array(
+					'key'    	=> 'start_time',
+					'value'  	=> $time,
+					'compare'	=> '>',
+				),
+				array(
+					'key'    	=> 'community',
+					'value'		=> $communityPostId,
+					'compare'	=> '=',
+				),
+			),
+		);
+		if($number > 0) {
+			$args['posts_per_page'] = $number;
+		}
+		$query = new WP_Query($args);
+		return $query;
 	}
 
 	function getUpcomingNonCommunityEvents($number = 0) {
@@ -152,12 +171,12 @@
 					'key'    	=> 'start_time',
 					'value'  	=> $time,
 					'compare'	=> '>',
-				),
+				)/*,
 				array(
-					'key'    	=> 'communities',
+					'key'    	=> 'community',
 					'value'		=> '',
 					'compare'	=> '=',
-				),
+				),*/
 			),
 		);
 		if($number > 0) {

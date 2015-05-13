@@ -168,7 +168,7 @@
 				<span class='state-indicator'></span>
 				<h3>
 					<?php $communities = getCommunities($post->ID); ?>
-					<?php echo $communities[0]->post_title . ":"; ?>
+					<?php echo $communities->post_title . ":"; ?>
 					<br>
 					<a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a>
 				</h3>

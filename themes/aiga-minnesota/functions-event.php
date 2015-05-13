@@ -38,9 +38,6 @@
 		);
 	}
 
-	// !!IMPORTANT -- FLUSH REWRITE RULES ONLY WHEN CHANGING A TAXONOMY. OTHERWISE, THEY WILL BE CACHED
-	//flush_rewrite_rules();
-
 	function getFooter(){
 		// this can wait
 	}

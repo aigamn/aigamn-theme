@@ -84,6 +84,10 @@
 				<?php $isFirst = true; ?>
 				<?php if($events): ?>
 					<?php foreach($events->posts as $event): ?>
+						<?php
+							$eventLocation = get_field('location', $event->ID);
+							$displayDate = date('D F jS, g:ia', get_field('start_time', $event->ID));
+						?>
 						<?php if($isFirst): ?>
 			                <article class='main'>
 								
@@ -92,27 +96,27 @@
 			                            <?php echo $event->post_title ?>
 			                        </h3>
 			                        <p>
-			                            Wed Oct 15, 6:00pm until 9:00pm
+			                        	<?php echo $displayDate ?>
 			                            <br>
-			                            Concordia University, Buetow Music Center Auditorium 
+			                            <?php echo $eventLocation ?>
 			                        </p>
 			                    </div>
-
-			                    <img src="http://placehold.it/768x432/94deff/84CeEf" alt="" class="img-responsive">
+								
+								<?php echo get_the_post_thumbnail( $event->ID, 'medium', array('class'=>'img-responsive') ); ?>
 
 			                    <div class="actions row">
 			                        <div class="col-xs-4">
-			                            <a href="single-event.php" class="btn btn-info">
+			                            <a href="<?php echo get_permalink($event->ID) ?>" class="btn btn-info">
 			                                Details
 			                            </a>
 			                        </div>
 			                        <div class="col-xs-4">
-			                            <a href="#" class="btn btn-info">
+			                            <a target='_blank' href="https://www.google.com/maps?q=<?php echo $eventLocation ?>" class="btn btn-info">
 			                                Directions
 			                            </a>
 			                        </div>
 			                        <div class="col-xs-4">
-			                            <a href="#" class="btn btn-info">
+			                            <a href="" class="btn btn-info">
 			                                Register
 			                            </a>
 			                        </div>
@@ -135,19 +139,19 @@
 			                    <div class="clearfix"></div>
 
 			                    <p>
-			                        Wed Oct 15, 6:00pm until 9:00pm
+			                        <?php echo $displayDate ?>
 			                        <br>
-			                        Concordia University, Buetow Music Center Auditorium 
+			                        <?php echo $eventLocation ?>
 			                    </p>
 
 			                    <div class="actions row">
 			                        <div class="col-xs-4">
-			                            <a href="single-event.php" class="btn btn-info">
+			                            <a href="<?php echo get_permalink($event->ID) ?>" class="btn btn-info">
 			                                Details
 			                            </a>
 			                        </div>
 			                        <div class="col-xs-4">
-			                            <a href="#" class="btn btn-info">
+			                            <a href="https://www.google.com/maps?q=<?php echo $eventLocation ?>" class="btn btn-info" target='_blank'>
 			                                Directions
 			                            </a>
 			                        </div>
@@ -170,12 +174,9 @@
             </section>
 
             <section class="padded-left col-sm-5 blog">
-                <header>
-                    <h2 class="pull-left">
-                        Blog
-                    </h2>
-                    <div class="clearfix"></div>
-                </header>
+                <h2>
+                    Blog
+                </h2>
                 <ul class="list-unstyled border-bottom">
                 	<?php if($blogposts): ?>
             			<?php $isFirst = true; ?>
@@ -188,10 +189,10 @@
 		                        </h3>
 		                        <small>Thursday, October 16th</small>
 		                        <p>
-		                            Many freelancers and designers gathered together to hear inspiring words and life stories by Jeff Holmberg of Holmberg Design Co. at our July AIGA Minnesota Luncheon event... 
+		                            <?php echo get_the_excerpt($blogpost->ID) ?>
 		                        </p>
 		                        <p>
-		                            <a class="btn btn-info">
+		                            <a href='<?php echo get_permalink($blogpost->ID) ?>' class="btn btn-info">
 		                                Read More
 		                            </a>
 		                        </p>

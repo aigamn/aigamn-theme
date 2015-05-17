@@ -3,7 +3,7 @@
     add_theme_support( 'post-thumbnails');
 
     include 'functions-event.php';
-    include 'functions-community.php';
+    include 'functions-group.php';
     include 'functions-post-footer.php';
     include 'functions-sponsor.php';
     include 'functions-blog.php';
@@ -152,7 +152,7 @@
   add_filter('post_row_actions', 'rd_duplicate_post_link', 10, 2 );
   add_filter('event_row_actions', 'rd_duplicate_post_link', 10, 2);
   add_filter('sponsor_row_actions', 'rd_duplicate_post_link', 10, 2);
-  add_filter('community_row_action', 'rd_duplicate_post_link', 10, 2);
+  add_filter('group_row_action', 'rd_duplicate_post_link', 10, 2);
   add_filter('page_row_actions', 'rd_duplicate_post_link', 10, 2);
 
 

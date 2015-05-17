@@ -5,8 +5,8 @@
 
 	<?php 
 		$footer = get_field('post_footer');
-		$events = getUpcomingEventsByCommunity($post->ID, 3);
-		$blogposts = getPostsByCommunity($post->ID, 5);
+		$events = getUpcomingEventsByGroup($post->ID, 3);
+		$blogposts = getPostsByGroup($post->ID, 5);
 	?>
 
 	<div class='background'>

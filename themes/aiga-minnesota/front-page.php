@@ -50,9 +50,9 @@
 			<!-- Wrapper for slides -->
 			<div class='carousel-inner col-md-8' role='listbox' >
 
-				<?php $upcomingNonCommunityEvents = getUpcomingNonCommunityEvents(4);?>
+				<?php $upcomingNonGroupEvents = getUpcomingNonGroupEvents(4);?>
 				<?php $counter = 0; ?>
-				<?php if($upcomingNonCommunityEvents->have_posts()) : while($upcomingNonCommunityEvents->have_posts()) : $upcomingNonCommunityEvents->the_post(); ?>
+				<?php if($upcomingNonGroupEvents->have_posts()) : while($upcomingNonGroupEvents->have_posts()) : $upcomingNonGroupEvents->the_post(); ?>
 
 				<?php
 					if($counter == 0) {
@@ -97,7 +97,7 @@
 
 			<ul class='tiles col-md-4 list-unstyled carousel-indicators border-bottom'>
 				<?php $counter = 0; ?>
-				<?php if($upcomingNonCommunityEvents->have_posts()) : while($upcomingNonCommunityEvents->have_posts()) : $upcomingNonCommunityEvents->the_post(); ?>
+				<?php if($upcomingNonGroupEvents->have_posts()) : while($upcomingNonGroupEvents->have_posts()) : $upcomingNonGroupEvents->the_post(); ?>
 				<li data-target='.carousel' data-slide-to="<?php echo $counter; ?>" <?php if($counter == 0) { echo "class='active'"; } ?>>
 					<span class='state-indicator'></span>
 					<h3>
@@ -146,16 +146,16 @@
 	<section>
 		<header>
 			<h2 class='pull-left'>
-				Communities
+				Groups
 			</h2>
-			<a href="<?php echo bloginfo('url') ?>/communities" class='pull-right'>All Communities</a>
+			<a href="<?php echo bloginfo('url') ?>/groups" class='pull-right'>All Groups</a>
 			<div class='clearfix'></div>
 		</header>
 		<ul class='tiles list-unstyled border-right border-bottom clearfix'>
 
-			<?php $upcomingCommunityEvents = getUpcomingCommunityEvents(3);?>
+			<?php $upcomingGroupEvents = getUpcomingGroupEvents(3);?>
 			<?php $counter = 0; ?>
-			<?php if($upcomingCommunityEvents->have_posts()) : while($upcomingCommunityEvents->have_posts()) : $upcomingCommunityEvents->the_post(); ?>
+			<?php if($upcomingGroupEvents->have_posts()) : while($upcomingGroupEvents->have_posts()) : $upcomingGroupEvents->the_post(); ?>
 
 				<?php
 					if($counter == 0) {
@@ -167,8 +167,8 @@
 				?>
 				<span class='state-indicator'></span>
 				<h3>
-					<?php $communities = getCommunities($post->ID); ?>
-					<?php echo $communities->post_title . ":"; ?>
+					<?php $groups = getGroups($post->ID); ?>
+					<?php echo $groups->post_title . ":"; ?>
 					<br>
 					<a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a>
 				</h3>

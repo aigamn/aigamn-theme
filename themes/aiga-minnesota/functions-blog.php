@@ -11,7 +11,7 @@ function getBlogPosts($number = 0) {
   return $query;
 }
 
-function getBlogPostsByCommunity($community, $number = 0) {
+function getBlogPostsByGroup($group, $number = 0) {
   $args = array(
     'post-type' => 'post',
   );

@@ -1,12 +1,12 @@
 <?php
 
-	add_action( 'init', 'create_community_post_type' );
-	function create_community_post_type() {
-		register_post_type( 'community',
+	add_action( 'init', 'create_group_post_type' );
+	function create_group_post_type() {
+		register_post_type( 'group',
 			array(
 					'labels' => array(
-					'name' => __( 'Communities' ),
-					'singular_name' => __( 'Community' )
+					'name' => __( 'Groups' ),
+					'singular_name' => __( 'Group' )
 				),
 				'public' => true,
 				'has_archive' => true,
@@ -22,13 +22,13 @@
 		);
 	}
 
-	function getPostsByCommunity($communityPostId, $number = 0) {
+	function getPostsByGroup($groupPostId, $number = 0) {
 		$args = array(
 			'post_type'			=>'post',
 			'meta_query'		=> array(
 				array(
-					'key'    	=> 'community',
-					'value'		=> $communityPostId,
+					'key'    	=> 'group',
+					'value'		=> $groupPostId,
 					'compare'	=> '=',
 				)
 			)

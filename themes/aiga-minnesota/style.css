@@ -13,7 +13,7 @@ Text Domain: aigaminnesota
 /* ----- INTELLIGENT DEFAULTS ----- */
 
 body{
-	-moz-box-sizing:border-box;
+	-moz-box-sigzing:border-box;
 	box-sizing:border-box;
 	color:#515151;
 	font-size: 15px;
@@ -639,6 +639,7 @@ ul.border-right{
 
 		.list li .border{
 			border: 1px solid #eeeeee;
+			position: relative;
 		}
 
 		.list .copy{

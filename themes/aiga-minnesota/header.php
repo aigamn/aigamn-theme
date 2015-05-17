@@ -26,7 +26,7 @@
 				<a href='<?php echo home_url(); ?>/event'>Events</a>
 			</li>
 			<li>
-				<a href="<?php echo home_url(); ?>/communities">Communities</a>
+				<a href="<?php echo home_url(); ?>/groups">Groups</a>
 			</li>
 			<li>
 				<a href='<?php echo home_url(); ?>/membership'>Membership</a>
@@ -68,7 +68,7 @@
 				<a href='<?php echo home_url(); ?>/event'>Events</a>
 			</li>
 			<li>
-				<a href="<?php echo home_url(); ?>/communities">Communities</a>
+				<a href="<?php echo home_url(); ?>/groups">Groups</a>
 			</li>
 			<li class='dropdown pull-right'>
 				<a data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

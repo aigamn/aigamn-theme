@@ -1,6 +1,6 @@
 <?php include_once('header.php'); ?>
 
-  <div class='container list communities gallery archives'>
+  <div class='container list groups gallery archives'>
     <h1>Events</h1>
     <br>
     <a href="<?php echo bloginfo('url'); ?>/event" class='btn btn-primary'>Upcoming Events</a>

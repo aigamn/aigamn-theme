@@ -42,9 +42,9 @@
 		// this can wait
 	}
 
-	function getCommunities($postId) {
-		$communities = get_field('community', $postId);
-		return $communities;
+	function getGroups($postId) {
+		$groups = get_field('group', $postId);
+		return $groups;
 	}
 
 	function isRecurringEvent($postId){
@@ -112,7 +112,7 @@
 		return $query;
 	}
 
-	function getUpcomingCommunityEvents($number = 0) {
+	function getUpcomingGroupEvents($number = 0) {
 		$time = time();
 		$args = array(
 			'post_type'			=>'event',
@@ -123,7 +123,7 @@
 					'compare'	=> '>',
 				),
 				array(
-					'key'    	=> 'community',
+					'key'    	=> 'group',
 					'value'		=> '',
 					'compare'	=> '!=',
 				),
@@ -136,7 +136,7 @@
 		return $query;
 	}
 
-	function getUpcomingEventsByCommunity($communityPostId, $number = 0) {
+	function getUpcomingEventsByGroup($groupPostId, $number = 0) {
 		$args = array(
 			'post_type'			=>'event',
 			'meta_query'		=> array(
@@ -146,8 +146,8 @@
 					'compare'	=> '>',
 				),
 				array(
-					'key'    	=> 'community',
-					'value'		=> $communityPostId,
+					'key'    	=> 'group',
+					'value'		=> $groupPostId,
 					'compare'	=> '=',
 				),
 			),
@@ -159,7 +159,7 @@
 		return $query;
 	}
 
-	function getUpcomingNonCommunityEvents($number = 0) {
+	function getUpcomingNonGroupEvents($number = 0) {
 		$time = time();
 		$args = array(
 			'post_type'			=>'event',
@@ -168,12 +168,12 @@
 					'key'    	=> 'start_time',
 					'value'  	=> $time,
 					'compare'	=> '>',
-				)/*,
+				),
 				array(
-					'key'    	=> 'community',
+					'key'    	=> 'group',
 					'value'		=> '',
 					'compare'	=> '=',
-				),*/
+				)
 			),
 		);
 		if($number > 0) {

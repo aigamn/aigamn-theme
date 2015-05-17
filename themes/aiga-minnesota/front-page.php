@@ -1,4 +1,7 @@
 
+<?php 
+	$ctas = getCurrentCTAs();
+?>
 <?php include_once('header.php'); ?>
 
 <div class='container' id='home'>
@@ -184,7 +187,11 @@
 	</section>
 
 	<section class='col-sm-4 border-right'>
-		<img class='img-responsive margin-auto' src='http://placehold.it/380x254/94deff/84CeEf' alt=''>
+		<?php foreach ($ctas->posts as $cta): ?>
+			<a href='<?php get_field('link', $cta->ID) ?>'>
+				<?php echo get_the_post_thumbnail( $cta->ID, 'thumbnail', array('class'=>'img-responsive margin-auto') ); ?>
+			</a>
+		<?php endforeach ?>
 	</section>
 
 	<section class='padded-left col-sm-8'>

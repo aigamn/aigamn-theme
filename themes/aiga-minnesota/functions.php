@@ -6,6 +6,7 @@
     include 'functions-group.php';
     include 'functions-post-footer.php';
     include 'functions-sponsor.php';
+    include 'functions-cta.php';
     include 'functions-blog.php';
 
     // [get_name login="username"]

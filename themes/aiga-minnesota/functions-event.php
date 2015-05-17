@@ -168,12 +168,12 @@
 					'key'    	=> 'start_time',
 					'value'  	=> $time,
 					'compare'	=> '>',
-				)/*,
+				),
 				array(
 					'key'    	=> 'group',
-					'value'		=> '',
-					'compare'	=> '=',
-				)*/
+					'value'		=> 'NULL',
+					'compare'	=> '='
+				)
 			),
 		);
 		if($number > 0) {

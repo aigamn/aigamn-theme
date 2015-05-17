@@ -31,6 +31,8 @@
 		$post_footer = get_field('post_footer');
 		//die(var_dump($footer));
 	?>
+	<pre>
+	<?php var_dump(get_post_meta($post->ID, 'group')) ?> </pre>
 
 	<div class='background'>
 		<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>

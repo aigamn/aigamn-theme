@@ -2,6 +2,7 @@
 <?php 
 	$ctas = getCurrentCTAs();
 ?>
+
 <?php include_once('header.php'); ?>
 
 <div class='container' id='home'>
@@ -56,6 +57,7 @@
 				<?php $upcomingNonGroupEvents = getUpcomingNonGroupEvents(4);?>
 				<?php $counter = 0; ?>
 				<?php if($upcomingNonGroupEvents->have_posts()) : while($upcomingNonGroupEvents->have_posts()) : $upcomingNonGroupEvents->the_post(); ?>
+
 
 				<?php
 					if($counter == 0) {

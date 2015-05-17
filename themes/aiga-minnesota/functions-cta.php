@@ -20,11 +20,11 @@
 	}
 
 	function getCurrentCTAs() {
-		$time = time();
+		$today = date("Ymd");
 		$args = array(
 			'post_type'		=> 'cta',
 			'meta_key'    	=> 'expiration_date',
-			'meta_value'  	=> $time,
+			'meta_value'  	=> $today,
 			'meta_compare'	=> '>',
 		);
 		$query = new WP_Query($args);

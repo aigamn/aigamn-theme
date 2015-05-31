@@ -2,21 +2,21 @@
 	$officers = new WP_User_Query( 
 		array( 
 			'meta_key' => 'position_type',
-			'meta_value' => 'officer' 
+			'meta_value' => 'officer'  
 		) 
 	);
 
 	$directors = new WP_User_Query( 
 		array( 
 			'meta_key' => 'position_type',
-			'meta_value' => 'director' 
+			'meta_value' => 'director'
 		) 
 	);
 
 	$associate_directors = new WP_User_Query( 
 		array( 
 			'meta_key' => 'position_type',
-			'meta_value' => 'associate_director' 
+			'meta_value' => 'associate_director'
 		) 
 	);
 ?>	
@@ -101,19 +101,18 @@
 				<h3><?php echo get_field('associate_directors_heading') ?></h3>
 				<div class='row'>
 					<?php foreach($associate_directors->results as $associate_director): ?>
+						<?php $usermeta = get_user_meta($associate_director->data->ID) ?>
 						<div class='col-sm-4'>
 							<?php echo get_field('position_title', 'user_' . $associate_director->data->ID) ?>
-							<br>
 							<?php
 								$image = get_field('bio_picture', 'user_' . $associate_director->data->ID);
 								$size = 'thumbnail'; // (thumbnail, medium, large, full or custom size)
 
 								if( $image ) {
-									echo wp_get_attachment_image( $image, $size, false, array('class'=>'img-responsive') ) . '<br>';
+									echo wp_get_attachment_image( $image, $size, false, array('class'=>'img-responsive') );
 								}
 							?>
-							<?php echo $associate_director->data->display_name ?>
-							<br>
+							<?php echo $usermeta['first_name'][0] ?> <?php echo $usermeta['last_name'][0] ?>
 							<a href='mailto:<?php echo $officer->data->user_email ?>'>
 								<?php echo $associate_director->data->user_email ?>
 							</a>

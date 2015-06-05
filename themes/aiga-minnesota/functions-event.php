@@ -21,9 +21,47 @@
 				),
 			)
 		);
+		register_post_type( 'conference',
+			array(
+					'labels' => array(
+					'name' => __( 'Conferences' ),
+					'singular_name' => __( 'Conference' )
+				),
+				'public' => true,
+				'has_archive' => true,
+				'menu_position' => 5,
+				'supports' => array(
+					'title',
+					'editor',
+					'thumbnail',
+					'excerpt',
+					'author',
+					'comments'
+				),
+			)
+		);
+		register_post_type( 'conference_event',
+			array(
+					'labels' => array(
+					'name' => __( 'Conference Events' ),
+					'singular_name' => __( 'Conference Event' )
+				),
+				'public' => true,
+				'has_archive' => true,
+				'menu_position' => 5,
+				'supports' => array(
+					'title',
+					'editor',
+					'thumbnail',
+					'excerpt',
+					'author',
+					'comments'
+				),
+			)
+		);
 		register_taxonomy(
 			'recurring',
-			'event',
+			array('conference','event'),
 			array(
 				'label' => __( 'Recurring' ),
 				'hierarchical' => true,

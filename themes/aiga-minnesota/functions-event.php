@@ -115,7 +115,7 @@
 			$slug = $event->slug;
 		}
 		$args = array(
-			'post_type'=>'event',
+			'post_type'=>array('event', 'conference'),
 			'tax_query'=>array(
 				array(
 					'taxonomy'=>'recurring',
@@ -138,7 +138,7 @@
 	function getUpcomingEvents($number = 0) {
 		$time = time();
 		$args = array(
-			'post_type'			=>'event',
+			'post_type'			=>array('event', 'conference'),
 			'meta_key'    	=> 'start_time',
 			'meta_value'  	=> $time,
 			'meta_compare'	=> '>',
@@ -224,7 +224,7 @@
 	function getPastEvents() {
 		$time = time();
 		$args = array(
-			'post_type'			=>'event',
+			'post_type'			=> array('event', 'conference'),
 			'meta_key'     	=> 'end_time',
 			'meta_value'   	=> $time,
 			'meta_compare' 	=> '<',

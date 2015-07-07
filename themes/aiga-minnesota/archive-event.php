@@ -18,7 +18,7 @@
                 <p><small><?php echo date("l, F jS, g:ia", get_field('start_time')); ?> until <?php echo date("g:ia", get_field('end_time'));?></small></p>
                 <p><?php echo the_excerpt(); ?></p>
                 <p class='text-right'>
-                  <a href="<?php echo the_permalink(); ?>" class='btn btn-info'>More Info</a>
+                  <a href="<?php echo the_permalink(); ?>"><span class="icon-circle-right more-info"></span></a>
                 </p>
               </div>
             </div>

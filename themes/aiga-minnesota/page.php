@@ -1,10 +1,6 @@
 <?php include_once('header.php'); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-	<div class='background'>
-		<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
-	</div>
-
 
 	<article class='container single'>
 
@@ -12,13 +8,13 @@
 
 			<h1><?php the_title() ?></h1>
 
-			<a href='mailto:<?php echo get_the_author_meta( 'user_email' ); ?>' class='btn btn-default cta'>
+			<!-- <a href='mailto:<?php echo get_the_author_meta( 'user_email' ); ?>' class='btn btn-default cta'>
 				Contact
 				<br>
 				<small>
 					<?php echo get_the_author_meta( 'user_email' ); ?>
 				</small>
-			</a>
+			</a> -->
 
 		</header>
 
@@ -27,7 +23,6 @@
 			<div class='main-image'>
 				<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
 			</div>
-			<?php the_content() ?>
 		</div>
 
 	</article>

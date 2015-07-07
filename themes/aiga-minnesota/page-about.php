@@ -1,56 +1,59 @@
 <?php
-	$officers = new WP_User_Query( 
-		array( 
+	$officers = new WP_User_Query(
+		array(
 			'meta_key' => 'position_type',
-			'meta_value' => 'officer'  
-		) 
+			'meta_value' => 'officer'
+		)
 	);
 
-	$directors = new WP_User_Query( 
-		array( 
+	$directors = new WP_User_Query(
+		array(
 			'meta_key' => 'position_type',
 			'meta_value' => 'director'
-		) 
+		)
 	);
 
-	$associate_directors = new WP_User_Query( 
-		array( 
+	$associate_directors = new WP_User_Query(
+		array(
 			'meta_key' => 'position_type',
 			'meta_value' => 'associate_director'
-		) 
+		)
 	);
-?>	
+?>
 <?php include_once('header.php'); ?>
 <?php while ( have_posts() ) : the_post(); ?>
-	<div class='background'>
+	<!-- <div class='background'>
 		<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
-	</div>
+	</div> -->
 
 
-	<article class='container single'>
+	<article class='container about'>
 
 		<header class='cta-header'>
 
-			<h1><?php the_title() ?></h1>
-
-			<a href='mailto:<?php echo get_the_author_meta( 'user_email' ); ?>' class='btn btn-default cta'>
+			<!-- <a href='mailto:<?php echo get_the_author_meta( 'user_email' ); ?>' class='btn btn-default cta'>
 				Contact
 				<br>
 				<small>
 					<?php echo get_the_author_meta( 'user_email' ); ?>
 				</small>
-			</a>
+			</a> -->
 
 		</header>
 
-		<div class='col-md-10 col-md-offset-1'>
+		<div class='col-md-12'>
 
 			<div class='main-image'>
 				<?php the_post_thumbnail('large', array('class'=>'img-responsive')) ?>
+				<h1><?php the_title() ?></h1>
 			</div>
+			<br>
+			<br>
 			<?php the_content() ?>
+			<br>
+			<br>
 			<div class='main-text'>
-				<h2>Board of Directors</h2>	
+				<h2>Board of Directors</h2>
 
 				<h3><?php echo get_field('officers_heading') ?></h3>
 				<div class='row'>

@@ -8,6 +8,7 @@
     include 'functions-sponsor.php';
     include 'functions-cta.php';
     include 'functions-blog.php';
+    include 'functions-gallery.php';
 
     // [get_name login="username"]
     function get_name_func( $atts ) {
